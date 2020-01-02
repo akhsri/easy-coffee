@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useEffect } from "react";
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import AppNavbar from "./components/layout/AppNavbar";
+import Footer from "./components/layout/AppNavbar";
+import AddBeverageModal from "./components/layout/AddBeverageModal";
+import { Provider } from "react-redux";
+import store from "./store";
+import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css";
+import Beverages from "./components/beverages/Beverages";
+const App = () => {
+  useEffect(() => {
+    // Init Materialize JS
+    M.AutoInit();
+  });
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Fragment>
+        <AppNavbar />
+      </Fragment>
+    </Provider>
   );
-}
+};
 
 export default App;
